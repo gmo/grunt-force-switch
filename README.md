@@ -17,70 +17,44 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-force-switch');
 ```
 
-## The "force_switch" task
+## The "turnForce[On/Off]" tasks
 
 ### Overview
-In your project's Gruntfile, add a section named `force_switch` to the data object passed into `grunt.initConfig()`.
+A grunt plugin to turn force on and off at will.
+
+The code for this plugin was obtained from [this](http://stackoverflow.com/questions/16612495/continue-certain-tasks-in-grunt-even-if-one-fails/16972894#16972894) answer by [explunit](http://stackoverflow.com/users/151212/explunit) on StackOverflow.
+
+Another variation of this plugin is called [grunt-continue](https://npmjs.org/package/grunt-continue).
+
+### Simple Example
 
 ```js
-grunt.initConfig({
-  force_switch: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-})
+module.exports = function(grunt) {
+
+  // Add the grunt-force-switch task
+  grunt.loadNpmTasks('grunt-force-switch');
+
+  // Other tasks and configuration
+  ...
+
+  grunt.registerTask('build', [
+    'init',
+    'turnForceOn',
+    // All tasks after this point will be run with the force
+    // option so that grunt will continue after failures
+    'run_phpunit',
+    'mochaTest',
+    'mocha_phantomjs',
+    'turnForceOff',
+    // Tasks after this point will be run without the force
+    // option so that grunt exits if they fail
+    'mergeTestResults'
+  ]);
+
+};
 ```
 
-### Options
-
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  force_switch: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
-
-```js
-grunt.initConfig({
-  force_switch: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+`turnForceOff` does not turn off force if `--force` was specified at the command line.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
