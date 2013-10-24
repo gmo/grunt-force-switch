@@ -1,23 +1,23 @@
 {
   "name": "grunt-force-switch",
   "description": "A grunt plugin to turn force on and off",
-  "version": "0.0.1",
-  "homepage": "https://github.com/jason/grunt-force-switch",
+  "version": "0.0.2",
+  "homepage": "https://github.com/gmodev/grunt-force-switch",
   "author": {
     "name": "Jason Gill",
     "email": "jason.gill@gmomail.org"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jason/grunt-force-switch.git"
+    "url": "git://github.com/gmodev/grunt-force-switch.git"
   },
   "bugs": {
-    "url": "https://github.com/jason/grunt-force-switch/issues"
+    "url": "https://github.com/gmodev/grunt-force-switch/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jason/grunt-force-switch/blob/master/LICENSE-MIT"
+      "url": "https://github.com/gmodev/grunt-force-switch/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",

@@ -1,6 +1,6 @@
 /*
  * grunt-force-switch
- * https://github.com/jason/grunt-force-switch
+ * https://github.com/gmodev/grunt-force-switch
  *
  * Copyright (c) 2013 Jason Gill
  * Licensed under the MIT license.
